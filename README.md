@@ -5,7 +5,7 @@
 2. Restart IntelliJ
 
 ### Step2: Configure the Docker daemon connection settings
-     https://github.com/srajeev/docker-debug-intellij/blob/master/IntelliJPrefsDocker.png
+https://github.com/srajeev/docker-debug-intellij/blob/master/IntelliJPrefsDocker.png
 1. Go to Settings/Preferences dialog, click Docker under Build, Execution, Deployment.
 2. Add a Docker configuration (The Add (+) button) and specify how to connect to the Docker daemon. I was running on Mac, and selected the `Docker for Mac option`
 3. I left the Path mappings with default /Users option
