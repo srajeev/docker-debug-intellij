@@ -5,6 +5,7 @@
 2. Restart IntelliJ
 
 ### Step2: Configure the Docker daemon connection settings
+     https://github.com/srajeev/docker-debug-intellij/blob/master/IntelliJPrefsDocker.png
 1. Go to Settings/Preferences dialog, click Docker under Build, Execution, Deployment.
 2. Add a Docker configuration (The Add (+) button) and specify how to connect to the Docker daemon. I was running on Mac, and selected the `Docker for Mac option`
 3. I left the Path mappings with default /Users option
@@ -12,24 +13,23 @@
 5. If it is set correct, you will see a `Connection Successful` message at the bottom of the dialog.
 
 ### Step3: Check/Test the Docker Tool Window.
-         https://screencast.com/t/jgi8SreiA
+     https://github.com/srajeev/docker-debug-intellij/blob/master/DTW.png
 1. Go to your project, and open the `Docker Tool Window` from menu `View -> Tool Windows -> Docker`
 2. You can see Containers and Images in your local Docker in this tool window. You can also Start/Stop Docker Plugin from this tool window. 
 3. You can create/start/Stop/Delete Containers and Images from here.
 
 ### Step4: Update Docker File Build Configuration
-         https://screencast.com/t/bMBecRUvoJG
-1. Make sure you add this to existing/new JAVA_OPTS ENV variable:
-   `-Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=y`
+         https://github.com/srajeev/docker-debug-intellij/blob/master/buildsbt.png
+Make sure you add this to existing/new JAVA_OPTS ENV variable:`-Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=y`
 Ex: I dynamically build Dockerfile with build.sbt. So, added this to  build.sbtas shown here: 
 
 
 ### Step5: Build your docker image
-1. I am building my project with SBT. So, `sbt clean docker` will create a docker image. Click on the image in Docker Tool Window and  Note the Image tag name to use while setting up run config next. (Note the text version, as it will remain same for every build)
+I am showing example with SBT build here. So, `sbt clean docker` will create a docker image. Click on the image in Docker Tool Window and  Note the Image tag name to use while setting up run config next. (Note the text version, as it will remain same for every build)
 
 ### Step6: Create Run Configuration for the application (Docker) 
-          https://screencast.com/t/InY8jhjO
-1. Add a New Run Configuration (Run -> Edit Configuration -> Add(+); Select `Docker`). https://screencast.com/t/L7JKpwnUE
+      https://github.com/srajeev/docker-debug-intellij/blob/master/DockerRunConfig.png
+1. Add a New Run Configuration (Run -> Edit Configuration -> Add(+); Select `Docker`).
 2. Add Image tage notes above to the `Image ID` field in the dialog.
 3. Give a static Container Name in the dialog (Ex: app-debug). 
 4. Bind any app exposed ports to the host. Also a port that will be used by the debugger. Ex: In my akka application, I have 2559 port exposed. So, I added two 2559:2559 and 5005:5005
@@ -38,7 +38,7 @@ Ex: I dynamically build Dockerfile with build.sbt. So, added this to  build.sbta
 7. Save the Configuration (Apply/OK)
  
 ### Step7: Create a Remote Debugging Configuration
-       https://screencast.com/t/Twjb04wiVFUw
+     https://github.com/srajeev/docker-debug-intellij/blob/master/remoteDebug.png
 1. Add a New Run Configuration (Run -> Edit Configuration -> Add(+); Select `Remote`).
 2. It pre-populates command line args. But of you want to change the debug port from default 5005, you can change that where `Port:`  field is.
 3. Select your project for the module's classpath.
