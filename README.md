@@ -20,6 +20,7 @@
 
 ### Step4: Update Dockerfile Build Configuration
 [ScreenShot: Dockerfile Build Config](./buildsbt.png)
+
 I dynamically build Dockerfile with build.sbt. So, added this to  build.sbt as shown in the screenshot above. 
 Make sure you add this to existing/new JAVA_OPTS ENV variable:`-Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=y`
 
